@@ -65,14 +65,14 @@ async function connectWallet(){
 } 
 
 
-function buyToken(){
+function buyToken1(){
   
     const tronWeb = window.tronWeb;
     const contractAdd = "THUEJukGarMTQoQU5oLsyLWZNoxsD1pkiH" //contract address
     
 
     // convert amounts to Sun
-    var amounts_str = document.getElementById('trx').value;
+    var amounts_str = document.getElementById('trx1').value;
 
     (async()=>{
         // Modern dapp browsers...
@@ -86,12 +86,12 @@ function buyToken(){
                 });
                 // location.href = "<?php echo $successUrl;?>&txhash="+hash;
                 console.log(hash);
-                document.getElementById('response').innerHTML = "https://tronscan.org/#/transaction/"+hash;
-                document.getElementById("myAnchor").href = "https://tronscan.org/#/transaction/"+hash; 
+                document.getElementById('response1').innerHTML = "https://tronscan.org/#/transaction/"+hash;
+                document.getElementById("myAnchor1").href = "https://tronscan.org/#/transaction/"+hash; 
             } catch (error) {
                 // location.href = "<?php echo $errorUrl;?>&error="+error;
                 console.log(error);
-                document.getElementById('response').innerHTML = error;
+                document.getElementById('response1').innerHTML = error;
             }
         }
 
@@ -103,7 +103,7 @@ function buyToken(){
 }
 
 
-function calculateToken(){
+function calculateToken1(){
     const tronWeb = window.tronWeb;
     const contractAdd = "THUEJukGarMTQoQU5oLsyLWZNoxsD1pkiH"; //contract address
 
@@ -116,10 +116,10 @@ function calculateToken(){
 
                 const tokenPrice = await contractInstance.tokenPriceTrx().call();
                 const tokenValue = parseInt(tokenPrice._hex,16)/1000000;
-                var x = document.getElementById("trx").value;
+                var x = document.getElementById("trx1").value;
                 var amount = parseFloat(x/tokenValue)
                 console.log(amount);
-                document.getElementById("tbt").value = amount;
+                document.getElementById("tbt1").value = amount;
                 
             } catch (error) {
                 console.log(error);
@@ -129,7 +129,7 @@ function calculateToken(){
 
         // Non-dapp browsers...
         else {
-            document.getElementById("tbt").value = "Connect to Wallet";
+            document.getElementById("tbt1").value = "Connect to Wallet";
         }
     })();
     
