@@ -1,4 +1,4 @@
-/*=========================================================
+﻿/*=========================================================
 Author       : Bestwebcreator.
 Template Name: Cryptocash – ICO, Cryptocurrency Website & ICO Landing Page HTML + Dashboard Template
 Version      : 1.7
@@ -1015,6 +1015,10 @@ to {
     -webkit-transform: translateY(-20px);
     transform: translateY(-20px); 
 } 
+}
+.w-dff{
+	width: 100%!important;
+    height: 12.5rem;
 }
 
 .v_blue .btn-info ,

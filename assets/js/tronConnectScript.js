@@ -22,8 +22,8 @@ function myDetails(){
 
                 const tokenPrice = await contractInstance.tokenPriceTrx().call();
                 const tokenValue = parseInt(tokenPrice._hex,16)/1000000;
-                document.getElementById('tokenRate').innerHTML ="1 TRX = "+ tokenValue + " TBT";
-                document.getElementById('tokenRate1').innerHTML ="1 TRX = "+ tokenValue + " TBT";
+                document.getElementById('tokenRate').innerHTML ="1 TBT = "+ tokenValue + " TRX";
+                document.getElementById('tokenRate1').innerHTML ="1 TBT = "+ tokenValue + " TRX";
 
             } catch (error) {
                 console.log(error);
@@ -45,31 +45,19 @@ function myDetails(){
 
                 const tokenPrice = await contractInstance.tokenPriceTrx().call();
                 const tokenValue = parseInt(tokenPrice._hex,16)/1000000;
-                document.getElementById('tokenRate').innerHTML ="1 TRX = "+ tokenValue + " TBT";
-                document.getElementById('tokenRate1').innerHTML ="1 TRX = "+ tokenValue + " TBT";
+                document.getElementById('tokenRate').innerHTML ="1 TBT = "+ tokenValue + " TRX";
+                document.getElementById('tokenRate1').innerHTML ="1 TBT = "+ tokenValue + " TRX";
 
         }
     })();
 }
 
-async function connectWallet(){
-    if (window.tronWeb && window.tronWeb.defaultAddress.base58) {
-        console.log(window.tronWeb.defaultAddress.base58);
-        document.getElementById('walletid').innerHTML = window.tronWeb.defaultAddress.base58;
-    }
-
-    // Non-dapp browsers...
-    else {
-        alert('Non-Tron browser detected. You should consider trying Tronlink Extenstion!');
-    }
-} 
 
 
 function buyToken1(){
   
     const tronWeb = window.tronWeb;
     const contractAdd = "THUEJukGarMTQoQU5oLsyLWZNoxsD1pkiH" //contract address
-    
 
     // convert amounts to Sun
     var amounts_str = document.getElementById('trx1').value;
@@ -84,12 +72,10 @@ function buyToken1(){
                 const hash = await contractInstance.ExchangeTRXforTokenMannual().send({
                     callValue:tronWeb.toSun(totalAmont),
                 });
-                // location.href = "<?php echo $successUrl;?>&txhash="+hash;
                 console.log(hash);
                 document.getElementById('response1').innerHTML = "https://tronscan.org/#/transaction/"+hash;
                 document.getElementById("myAnchor1").href = "https://tronscan.org/#/transaction/"+hash; 
             } catch (error) {
-                // location.href = "<?php echo $errorUrl;?>&error="+error;
                 console.log(error);
                 document.getElementById('response1').innerHTML = error;
             }
@@ -106,6 +92,7 @@ function buyToken1(){
 function calculateToken1(){
     const tronWeb = window.tronWeb;
     const contractAdd = "THUEJukGarMTQoQU5oLsyLWZNoxsD1pkiH"; //contract address
+    myDetails1();
 
     (async()=>{
         // Modern dapp browsers...
